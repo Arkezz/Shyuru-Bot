@@ -1,0 +1,6 @@
+{
+    "ignore": ["coins.json"],
+    "ignore": ["xp.json"],
+    "ignore": ["prefixes.json"]
+
+}
