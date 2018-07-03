@@ -3,6 +3,7 @@ const tokenfile = require("./token.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
+const token = process.env.token
 bot.commands = new Discord.Collection();
 let coins = require("./coins.json");
 let xp = require("./xp.json");
@@ -124,7 +125,7 @@ bot.on("message", async message => {
   
 });
 
-bot.login(tokenfile.token);
+bot.login(token);
   
 
 
