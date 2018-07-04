@@ -109,9 +109,9 @@ bot.on("message", async message => {
   }
 
 
-  
-  let cmd = args.shift().toLowerCase();
-  let args = message.content.slice(prefix.length).trim().split(/ +/g);
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0].toLowerCase();
+  let args = messageArray.slice(1);
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
