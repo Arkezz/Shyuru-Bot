@@ -2,7 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-const token = process.env.token;
+const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.Df4O0Q.0AGghSq1oGJB3mZGhpno1DQLZ8c";
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 bot.commands = new Discord.Collection();
@@ -33,58 +33,7 @@ bot.on("ready", async () => {
   console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
   bot.user.setActivity("Boyfriend of the dead", {type: "WATCHING"});
 
-  const applyText = (canvas, text) => {
-    const ctx = canvas.getContext('2d');
-
-    // Declare a base size of the font
-    let fontSize = 70;
-
-    do {
-        // Assign the font to the context and decrement it so it can be measured again
-        ctx.font = `${fontSize -= 10}px sans-serif`;
-        // Compare pixel width of the text to the canvas minus the approximate avatar size
-    } while (ctx.measureText(text).width > canvas.width - 300);
-
-    // Return the result to use in the actual canvas
-    return ctx.font;
-};
-
-  bot.on('guildMemberAdd', async member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'welcome');
-    if (!channel) return;
-
-    const canvas = Canvas.createCanvas(700, 250);
-    const ctx = canvas.getContext('2d');
-
-    const background = await Canvas.loadImage('./wallpaper.jpg');
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = '#74037b';
-    ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-    // Slightly smaller text placed above the member's display name
-    ctx.font = '28px sans-serif';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText('Welcome to the server,', canvas.width / 2.5, canvas.height / 3.5);
-
-    // Add an exclamation point here and below
-    ctx.font = applyText(canvas, `${member.displayName}!`);
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(`${member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
-
-    ctx.beginPath();
-    ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.clip();
-
-    const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
-    const avatar = await Canvas.loadImage(buffer);
-    ctx.drawImage(avatar, 25, 25, 200, 200);
-
-    const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
-
-    channel.send(`Welcome to the server, ${member}!`, attachment);
-});
+  
 
 });
 
