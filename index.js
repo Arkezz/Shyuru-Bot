@@ -56,8 +56,8 @@ bot.on("message", async message => {
     };
   }
 
-  let coinAmt = Math.floor(Math.random() * 15) + 1;
-  let baseAmt = Math.floor(Math.random() * 15) + 1;
+  let coinAmt = Math.floor(Math.random() * 5) + 1;
+  let baseAmt = Math.floor(Math.random() * 5) + 1;
   
 
   if(coinAmt === baseAmt){
@@ -88,7 +88,7 @@ bot.on("message", async message => {
 
   let curxp = xp[message.author.id].xp;
   let curlvl = xp[message.author.id].level;
-  let nxtLvl = xp[message.author.id].level * 300;
+  let nxtLvl = xp[message.author.id].level * 121958;
   xp[message.author.id].xp = curxp + xpAdd;
   if(nxtLvl <= xp[message.author.id].xp){
     xp[message.author.id].level = curlvl + 1;
