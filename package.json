@@ -15,7 +15,7 @@
     "ascii-art": "^1.4.3",
     "bindings": "^1.3.0",
     "canvas": "^2.0.0-alpha.12",
-    "discord.js": "github:Hydrabolt/Discord.js",
+    "discord.js": "^11.3.2",
     "discord.js-commando": "^0.10.0",
     "erlpack": "^0.1.2",
     "ffmpeg-binaries": "^3.2.2-3",
