@@ -1,6 +1,6 @@
     module.exports.run = async (bot, message, args) => {
         let active = new Map();
-        let fetched = active.get(message.guild.id);
+        let fetched = active.get(message.guild.id);  
 
         if(fetched) return message.channel.send("there currently isnt any music playing in this guild");
 
