@@ -12,7 +12,7 @@ if(message.member.hasPermission("MANAGE_MESSAGES")){
   let modembed = new Discord.RichEmbed()
   .setDescription("Mod Help Menu")
   .setColor("#8300ff")
-  .addField("Mod Commands:", "addrole, removerole, kick, warn, ban, clear, prefix, say, tempmute.");
+  .addField("Mod Commands:", "addrole, removerole, kick, warn, ban, clear, prefix, say, play, leave, tempmute.");
 
   try{
     await message.author.send(modembed);

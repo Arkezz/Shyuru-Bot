@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
-
+const active = new Map();
     module.exports.run = async (bot, message, args) => {
 
     if (!message.member.voiceChannel) return message.channel.send("please connect to a voice channel.");
