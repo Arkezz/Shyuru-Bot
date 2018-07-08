@@ -2,7 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-const token = process.env.token;
+const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.DiI0oA.um5R3WUolqOfk_JkUPQYrapIoM0";
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 bot.commands = new Discord.Collection();
@@ -11,6 +11,8 @@ let xp = require("./xp.json");
 let purple = botconfig.purple;
 let cooldown = new Set();
 let cdseconds = 5;
+
+const db = require("quick.db");
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -42,6 +44,9 @@ bot.on("message", async message => {
 
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
+
+  db.add(`globalMessages_${message.author.id}`, 1);
+  db.add(`guildMessages_${message.guild.id}_${message.author.id}`, 1);
 
   let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
   if(!prefixes[message.guild.id]){
@@ -111,6 +116,7 @@ bot.on("message", async message => {
   if(!message.member.hasPermission("ADMINISTRATOR")){
     cooldown.add(message.author.id);
   }
+
 
 
   let messageArray = message.content.split(" ");
