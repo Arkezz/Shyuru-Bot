@@ -1,19 +1,18 @@
-const Discord = require("discord.js");
-const superagent = require("superagent")
-
-module.exports.run = async (bot, message, args) => {
+const superagent = require('superagent')
+const Discord = require('discord.js')
+module.exports.run = async (client, message, args, tools) => {
+    
     const { body } = await superagent
-    .get('https://random.dog/woof.json');
+    .get('https://dog.ceo/api/breeds/image/random');
     const embed = new Discord.RichEmbed()
     .setColor(0x954D23)
-    .setTitle("Bark :dog:")
-    .setImage(body.url)
+    .setTitle("Woof :dog2:")
+    .setImage(body.message)
     message.channel.send({embed})
+    
+
 }
 
-
-
-
 module.exports.help = {
-    name:"dog"
+    name: "dog"
   }

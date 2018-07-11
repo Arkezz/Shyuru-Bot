@@ -2,7 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-const token = process.env.token;
+const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.DibBzQ.sW8YxPIdUb--GMMdcPunzyRxZ5A";
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 bot.commands = new Discord.Collection();
@@ -29,6 +29,8 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 });
+
+bot.on(`error`, console.error);
 
 bot.on("ready", async () => {
 

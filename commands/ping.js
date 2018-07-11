@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-const Discord = require("discord.js");
-=======
-Const Discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
->>>>>>> 033d2d35566ad9a263829f030121c5525d9845d2
+const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     
@@ -19,6 +14,6 @@ module.exports.run = async (bot, message, args) => {
     
   
 
-  module.exports.help = {
+module.exports.help = {
     name: "ping"
-  }
+}
