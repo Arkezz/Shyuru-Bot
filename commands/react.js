@@ -2,8 +2,8 @@ const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
  
- 
-  message.react("😦");
+  let emoji = bot.emojis.find('name', 'wink')
+  message.react(emoji);
 
 }
 

@@ -2,15 +2,20 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.DibBzQ.sW8YxPIdUb--GMMdcPunzyRxZ5A";
+const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.Di5q2g.xZGVefB-0BFzFI2EZ2Jsnp9ZgXk";
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
+const active = new Map();
 bot.commands = new Discord.Collection();
 let coins = require("./coins.json");
 let xp = require("./xp.json");
 let purple = botconfig.purple;
 let cooldown = new Set();
 let cdseconds = 5;
+
+let ops = {
+  active: active
+}
 
 const db = require("quick.db");
 
@@ -32,7 +37,11 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.on(`error`, console.error);
 
+let statuses = [`mom is the best`, `you should leave`];
+
 bot.on("ready", async () => {
+
+  
 
   console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
   bot.user.setActivity("Boyfriend of the dead", {type: "WATCHING"});
@@ -63,8 +72,8 @@ bot.on("message", async message => {
     };
   }
 
-  let coinAmt = Math.floor(Math.random() * 5) + 1;
-  let baseAmt = Math.floor(Math.random() * 5) + 1;
+  let coinAmt = Math.floor(Math.random() * 1) + 1;
+  let baseAmt = Math.floor(Math.random() * 1) + 1;
   
 
   if(coinAmt === baseAmt){
@@ -79,7 +88,7 @@ bot.on("message", async message => {
   .setColor("#0000FF")
   .addField("💸", `${coinAmt} coins added!`);
 
-  message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
+  //message.channel.send(coinEmbed).then(msg => {msg.delete(1000)});
   }
 
   let xpAdd = Math.floor(Math.random() * 7) + 8;
@@ -125,9 +134,15 @@ bot.on("message", async message => {
   let cmd = messageArray[0].toLowerCase();
   let args = messageArray.slice(1); 
 
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
-  if(commandfile) commandfile.run(bot, message, args);
+  try {
 
+
+
+  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+  if(commandfile) commandfile.run(bot, message, args, ops);
+  } catch (e) {
+    console.log(e.stack);
+  }
   setTimeout(() => {
     cooldown.delete(message.author.id);
   }, cdseconds * 1000);

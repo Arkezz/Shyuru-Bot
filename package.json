@@ -51,6 +51,7 @@
     "uws": "^10.148.0",
     "weather-js": "^2.0.0",
     "youtube-info": "^1.2.0",
+    "yt-search": "^0.1.4",
     "ytdl-core": "^0.20.4"
   },
   "optionalDependencies": {
