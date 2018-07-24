@@ -14,5 +14,6 @@ const ytdl = require("ytdl-core");
     }
 
     module.exports.help = {
-        name: "leave"
-      }
+        name: "leave",
+        aliases: ["leave"]
+    }

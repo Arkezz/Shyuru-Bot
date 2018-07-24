@@ -122,6 +122,7 @@ message.channel.send(squadembed);
   }
 
 
-module.exports.help = {
-  name: "fortnite"
+  module.exports.help = {
+    name: "fortnite",
+    aliases: ["fortnite"]
 }

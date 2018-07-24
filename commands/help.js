@@ -25,5 +25,6 @@ if(message.member.hasPermission("MANAGE_MESSAGES")){
 }
 
 module.exports.help = {
-  name: "help"
+  name: "help",
+  aliases: ["help"]
 }

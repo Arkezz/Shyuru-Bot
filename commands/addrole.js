@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. We tried to DM them, but their DMs are locked.`)
   }
 }
-
 module.exports.help = {
-  name: "addrole"
+  name: "addrole",
+  aliases: ["addrole"]
 }

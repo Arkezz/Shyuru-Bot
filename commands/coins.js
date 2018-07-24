@@ -24,7 +24,7 @@ message.channel.send(coinembed).then(m => m.delete(3000));
   
 
 }
-
 module.exports.help = {
-  name: "coins"
+  name: "coins",
+  aliases: ["bal", "balance", 'money']
 }

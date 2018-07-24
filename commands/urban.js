@@ -24,5 +24,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "urban"
-  }
+    name: "urban",
+    aliases: ["urban"]
+}

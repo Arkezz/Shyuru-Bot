@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args, ops) => {
      message.channel.send(`added to the queue ${info.title} | requested by: ${message.author.tag}`);
    }
    ops.active.set(message.guild.id, data);
-
+}
 async function play(bot, ops, data) {
   bot.channels.get(data.queue[0].announceChannel).send(`Now Playing ${data.queue[0].songTitle} | Request By: ${data.queue[0].requester}`);
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, { filter: `audioonly`}));
@@ -49,11 +49,12 @@ function finish(bot, ops, dispatcher) {
 
   }
 }
-}
+
    
 
 
   
 module.exports.help = {
-  name: "play"
+  name: "play",
+  aliases: ["play"]
 }

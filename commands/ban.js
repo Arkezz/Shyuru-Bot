@@ -27,13 +27,13 @@ module.exports.run = async (bot, message, args) => {
     .addField("Reason", bReason);
 
 
-    let incidentchannel = message.guild.channels.find(c => c.name =="mod-logs");
+    let incidentchannel = message.guild.channels.find(c => c.name == "mod-logs");
     if(!incidentchannel) return message.channel.send("Can't find mod-logs channel.");
 
     message.guild.member(bUser).ban(bReason);
     message.incidentchannel.send(banembed);
 }
-
 module.exports.help = {
-  name:"ban"
+  name: "ban",
+  aliases: ["ban"]
 }

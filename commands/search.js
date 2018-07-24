@@ -23,5 +23,6 @@ search(args.join(' '), function(err, res) {
 }
 
 module.exports.help = {
-    name: "search"
-  }
+    name: "search",
+    aliases: ["search"]
+}

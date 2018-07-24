@@ -9,5 +9,6 @@ module.exports.run = async (bot, message, args, ops) => {
 
 }
 module.exports.help = {
-name: "volume"
+  name: "volume",
+  aliases: ["volume"]
 }

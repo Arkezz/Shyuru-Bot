@@ -38,7 +38,7 @@ message.channel.send(ballembed);
 }
 
 module.exports.help = {
-  name:"8ball"
+  name: "8ball",
+  aliases: ["8ball"]
 }
-
 

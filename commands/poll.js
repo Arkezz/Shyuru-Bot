@@ -27,5 +27,6 @@ await msg.react('❌')
 }
 
 module.exports.help = {
-    name:"poll"
-  }
+  name: "poll",
+  aliases: ["poll"]
+}

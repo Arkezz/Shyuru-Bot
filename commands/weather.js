@@ -34,5 +34,6 @@ weather.find({search: args.join(" "), degreeType: `c`}, function(err, result) {
 
 
 module.exports.help = {
-    name: "weather"
-  }
+    name: "weather",
+    aliases: ["weather"]
+}

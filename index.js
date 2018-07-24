@@ -2,11 +2,12 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-const token = "NDU1MTQ5MDgwOTEwMzY0Njcz.Di5q2g.xZGVefB-0BFzFI2EZ2Jsnp9ZgXk";
+const token = process.env.token;
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const active = new Map();
 bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 let coins = require("./coins.json");
 let xp = require("./xp.json");
 let purple = botconfig.purple;
@@ -32,6 +33,9 @@ fs.readdir("./commands/", (err, files) => {
     let props = require(`./commands/${f}`);
     console.log(`${f} loaded!`);
     bot.commands.set(props.help.name, props);
+    props.help.aliases.forEach(alias => {
+      bot.aliases.set(alias, props.help.name);
+  });
   });
 });
 
@@ -129,20 +133,21 @@ bot.on("message", async message => {
   }
 
 
-
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0].toLowerCase();
-  let args = messageArray.slice(1); 
-
-  try {
-
-
-
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
-  if(commandfile) commandfile.run(bot, message, args, ops);
-  } catch (e) {
-    console.log(e.stack);
+  let args = message.content.slice(prefix.length).trim().split(' ');
+  let cmd = args.shift().toLowerCase();
+  let command;
+  
+  if (bot.commands.has(cmd)) {
+      command = bot.commands.get(cmd);
+  } else if (bot.aliases.has(cmd)) {
+      command = bot.commands.get(bot.aliases.get(cmd));
   }
+  try {
+      command.run(bot, message, args, ops);
+  } catch (e) {
+      message.channel.send(`: x: The command \`${cmd}\` couldn't be found!`);
+  }
+  
   setTimeout(() => {
     cooldown.delete(message.author.id);
   }, cdseconds * 1000);

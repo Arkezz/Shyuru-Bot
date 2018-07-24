@@ -23,5 +23,6 @@ module.exports.run = async (bot, message, args, ops) => {
     message.channel.send(`Succesfully voted to skip! ${fetched.queue[0].voteSkips.length}/${required} required`);
 }
 module.exports.help = {
-    name: "skip"
-  }
+    name: "skip",
+    aliases: ["skip"]
+}

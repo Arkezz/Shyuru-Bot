@@ -18,5 +18,6 @@ message.channel.send(finalOutput);
 }
 
 module.exports.help = {
-    name: "messageslb"
-  }
+    name: "messageslb",
+    aliases: ["messageslb"]
+}

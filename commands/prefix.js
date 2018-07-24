@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(sEmbed);
   
 }
-
 module.exports.help = {
-  name: "prefix"
+  name: "prefix",
+  aliases: ["prefix"]
 }
