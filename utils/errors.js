@@ -105,3 +105,12 @@ module.exports.norole = (channel) => {
         channel.send(embed).then(m => m.delete(5000));
 }
 
+module.exports.wait = (channel) => {
+    let embed = new Discord.RichEmbed()
+        .setTitle("Error")
+        .setDescription("You have to wait 5 seconds!")
+        .setColor(config.red);
+
+        channel.send(embed).then(m => m.delete(5000));
+}
+

@@ -13,6 +13,7 @@ let xp = require("./xp.json");
 let purple = botconfig.purple;
 let cooldown = new Set();
 let cdseconds = 5;
+const errors = require("./utils/errors.js");
 
 let ops = {
   active: active
@@ -126,7 +127,7 @@ bot.on("message", async message => {
   if(!message.content.startsWith(prefix)) return;
   if(cooldown.has(message.author.id)){
     message.delete();
-    return message.reply("You have to wait 5 seconds between commands.")
+    return errors.wait(message.channel)
   }
   if(!message.member.hasPermission("ADMINISTRATOR")){
     cooldown.add(message.author.id);
