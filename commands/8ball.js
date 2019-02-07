@@ -8,7 +8,9 @@ module.exports.run = async (bot, message, args) => {
   .setTitle("8Ball-help")
   .setDescription("the 8Ball command allows you to ask a question to the bot and it will reply with a basic answer.")
   .addField("Usage: ", "s!8ball (question)")
+  .addField(`Example: `, `balls!8 am i handsome?`)
   .addField("Perms: ", "you dont need any special perms to use it.")
+
   .setColor("RANDOM");
 
   if (args[0] === "help") {
@@ -19,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
   }
 
 if(!args[1]) return message.reply("please ask a full question");
-let replies = ["yes", "no","i dont know", "ask again later"];
+let replies = ["yes", "no","keep dreaming", "are you dumb?", `in the future`];
 
 let result = Math.floor((Math.random()* replies.length));
 let question = args.slice(0).join(" ");

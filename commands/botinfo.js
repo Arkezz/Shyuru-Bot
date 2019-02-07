@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const prettyms = require("pretty-ms")
 
 
  
@@ -18,6 +19,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Bot Name", bot.user.username)
     .addField("Bot Uptime", uptime)
     .addField("Created On", bot.user.createdAt)
+    .addField('Invite the bot!', '[By clicking here!](https://discordapp.com/api/oauth2/authorize?client_id=455149080910364673&permissions=8&scope=bot)', true)
     .addField("Made By", "SlimandHandsome");
    message.channel.send(botembed);
 }

@@ -7,15 +7,16 @@ const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message, args) => {
  let username = args.slice(2).join(" ");
-  let platform = args[1] || `pc`;
-  let gamemode = args[0];
+  let platform = args[1].toLowerCase() || `pc`;
+  let gamemode = args[0].toLowerCase();
 
   if(gamemode != `solo` && gamemode != `duo` && gamemode != `squad` && gamemode != `lifetime`) return message.reply("Usage: s!fornite <mode> <platform> <user>");
 
 
 if(!username) return errors.cantfindUser(message.channel)
-
+  
   let data = fortnite.user(username,platform).then(data => {
+    
 
       let stats = data.stats;
 
@@ -124,5 +125,5 @@ message.channel.send(squadembed);
 
   module.exports.help = {
     name: "fortnite",
-    aliases: ["fortnite"]
+    aliases: ["Fortnite"]
 }
