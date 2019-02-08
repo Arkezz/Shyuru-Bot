@@ -9,8 +9,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Server Name", message.guild.name)
     .addField("Created On", message.guild.createdAt)
     .addField("You Joined", message.member.joinedAt)
-    .addField("Total Members", message.guild.memberCount)
-    .addField("servers: ", bot.guilds.size);
+    .addField("Total Members", message.guild.memberCount);
     message.channel.send(serverembed);
 }
 
