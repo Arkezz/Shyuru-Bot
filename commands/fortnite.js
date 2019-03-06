@@ -93,12 +93,12 @@ message.channel.send(squadembed);
 
 
       let lifetime = stats.lifetime;
-      let score = lifetime[6][`Score`];
-      let mplayed = lifetime[7][`Matches Played`];
-      let wins = lifetime[8][`Wins`];
-      let winper = lifetime[9][`Win%`];
-      let kills = lifetime[10][`Kills`];
-      let kd = lifetime[11][`K/d`];
+      let score = lifetime.score;
+      let kd = lifetime.kd;
+      let matches = lifetime.matches;
+      let kills = lifetime.kills;
+      let wins = lifetime.wins;
+      let top3 = lifetime.top_3;
 
 
       
